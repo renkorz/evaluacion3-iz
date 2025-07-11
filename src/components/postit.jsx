@@ -5,14 +5,15 @@ function PostIt({ title, description, important, onDelete }) {
     const backgroundColor = important ? '#EC7063' : '#FFFFCC';
 
     return (
-        <div className="postit p-3 position-relative"
+        <div className="postit"
             style={{
                 backgroundColor,
-                width: '230px',
-                height: '230px',
+                aspectRatio: '1 / 1', // Mantiene el cuadrado
+                width: '100%',        // Se adapta al espacio
+                maxWidth: '250px',    // Limita el tamaño en pantalla
                 boxShadow: '2px 2px 8px rgba(0,0,0,0.3)',
-                borderRadius: '5px',
-                wordBreak:'break-word',
+                borderRadius: '10px',
+                wordBreak: 'break-word',
                 position: 'relative',
                 padding: '1rem'
             }}
