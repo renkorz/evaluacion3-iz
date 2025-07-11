@@ -8,6 +8,7 @@ function PostIt({ title, description, important, onDelete }) {
         <div className="postit p-3 position-relative"
             style={{
                 backgroundColor,
+                maxWidth: '250px',
                 width: '100%',
                 minHeight: '150px',
                 boxShadow: '2px 2px 8px rgba(0,0,0,0.3)',
