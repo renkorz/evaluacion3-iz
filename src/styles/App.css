@@ -48,17 +48,29 @@ body {
   color: #fff;
 }
 
-.App {
-  min-height: 100vh;
+.PostIt {
+  font-family: 'Reenie Beanie', cursive;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.postit {
-  font-family: 'Reenie Beanie', cursive;
-  column-rule: #111;
-  transition: transform 0.2s ease;
+.postit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+  justify-items: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .postit:hover {
   transform: scale(1.05);
-  transition: transform 0.2s ease;
+}
+
+.App {
+  min-height: 100vh;
 }
