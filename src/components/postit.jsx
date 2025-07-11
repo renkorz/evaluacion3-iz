@@ -8,12 +8,13 @@ function PostIt({ title, description, important, onDelete }) {
         <div className="postit p-3 position-relative"
             style={{
                 backgroundColor,
-                maxWidth: '250px',
-                width: '100%',
-                minHeight: '150px',
+                width: '230px',
+                height: '230px',
                 boxShadow: '2px 2px 8px rgba(0,0,0,0.3)',
-                borderRadius: '10px',
-                wordBreak: 'break-word'
+                borderRadius: '5px',
+                wordBreak:'break-word',
+                position: 'relative',
+                padding: '1rem'
             }}
         >
             {/* Botón para eliminar el post-it */}
