@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from 'react-bootstrap'
 
-function PostItForm ({ onAdd }) {
-    const [title, setTitle] = useState ('');
+function PostItForm({ onAdd }) {
+    const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [important, setImportant] = useState('');
-    const [error, setError] = useState('');
+    const [important, setImportant] = useState(false);
+    const [error, setError] = useState(false);
 
-    const handleSumbit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (description.trim() === ''){
+        if (description.trim() === '') {
             setError(true);
             return;
         }
-        
+
         const newNote = {
             title,
             description,
@@ -23,53 +22,43 @@ function PostItForm ({ onAdd }) {
 
         onAdd(newNote);
 
+        // Limpiar los campos
         setTitle('');
         setDescription('');
         setImportant(false);
-        setError(false)
+        setError(false);
     };
 
     return (
         <div className="mb-4">
-            <Form onSubmit={ handleSumbit } className="bg-light p-3 rounded">
-                {error && <Alert variant="danger">La descripción es obligatoria.</Alert>}
+            <form onSubmit={handleSubmit} className="bg-light p-3 rounded">
+                {error && (
+                    <div className="alert alert-danger">La descripción es obligatoria.</div>
+                )}
+                
+                <div className="mb-2">
+                    <label className="form-label">Título (opcional)</label>
+                    <input type="text" className="form-control" placeholder="Título" value={title} onChange={(e) => setTitle(e.target.value)}/>
+                </div>
 
-                <Form.Group className="mb-2">
-                    <Form.Label>Título (opcional)</Form.Label>
-                    <Form.Control
-                    type="text"
-                    placeholder="Título"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-            </Form.Group>
+                <div className="mb-2">
+                    <label className="form-label">Descripción *</label>
+                    <textarea className="form-control" rows="2" placeholder="Escribe algo..." value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                </div>
 
-            <Form.Group className="mb-2">
-                <Form.Label>Descripción *</Form.Label>
-                <Form.Control
-                    as="textarea"
-                    rows={2}
-                    placeholder="Escribe algo..."
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-            </Form.Group>
+                <div className="form-check mb-3">
+                    <input type="checkbox" className="form-check-input" id="important" checked={important} onChange={(e) => setImportant(e.target.checked)}/>
+                    <label className="form-check-label" htmlFor="important">
+                        Importante
+                    </label>
+                </div>
 
-            <Form.Group className="mb-3">
-                <Form.Check
-                    type="checkbox"
-                    label="Importante"
-                    checked={important}
-                    onChange={(e) => setImportant(e.target.checked)}
-                />
-            </Form.Group>
-
-            <Button type="submit" variant="dark">
-                Agregar Nota
-            </Button>
-        </Form>
-    </div>
-    );
+                <button type="submit" className="btn btn-dark">
+                    Agregar Nota
+                </button>
+            </form>
+        </div>
+    )
 }
 
 export default PostItForm;
