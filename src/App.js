@@ -1,19 +1,19 @@
-import React, {use, useState} from "react";
+import React, {useState} from "react";
 import Formulariopostit from './components/formulariopostit';
-import Postit from "./components/postit";
+import Postit from "./components/postitdev";
 import './App.css';
 
 function App() {
   const [postits, setPostits] = useState([]);
-  const [contadorId, setContadorId] = useState([1]);
 
-  const agregarPostit = (texto) => {
-    const nuevoPostit ={
-      id: contadorId,
-      texto: texto
+  const agregarPostit = (titulo, texto, importante) => {
+    const nuevoPostit = {
+      id: Date.now(),
+      titulo,
+      texto,
+      importante
     };
-    setPostits([nuevoPostit, ...postits]);
-    setContadorId(contadorId + 1);
+    setPostits([...postits, nuevoPostit]); // Esto hace que se añada al final de la lista de postit
   };
 
   const eliminarPostit = (id) => {
@@ -22,15 +22,17 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>Mis Notas</h1>
-      <Formulariopostit agregarPostit={agregarPostit}/>
+      <h1>Post-It Simulator</h1>
+      <Formulariopostit agregarPostit={agregarPostit} />
       <div className="postits-grid">
         {postits.map(postit => (
-          <Postit
-          key={postit.id}
-          id={postit.id}
-          texto={postit.texto}
-          eliminarPostit={eliminarPostit}
+          <Postit 
+            key={postit.id} 
+            id={postit.id} 
+            titulo={postit.titulo}
+            texto={postit.texto} 
+            importante={postit.importante}
+            eliminarPostit={eliminarPostit} 
           />
         ))}
       </div>

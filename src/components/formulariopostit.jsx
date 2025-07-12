@@ -1,19 +1,27 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
 
-function Formulariopostit({agregarPostit}) {
+function Formulariopostit({ agregarPostit }) {
+    const [titulo, setTitulo] = useState('');
     const [texto, setTexto] = useState('');
+    const [importante, setImportante] = useState(false);
 
     const manejarEnvio = (e) => {
         e.preventDefault();
-        if(texto.trim() === '') return;
-        agregarPostit(texto);
+        if (titulo.trim() === '' || texto.trim() === '') return;
+
+        agregarPostit(titulo, texto, importante);
+        setTitulo('');
         setTexto('');
+        setImportante(false);
     };
 
     return (
         <form className="form-postit" onSubmit={manejarEnvio}>
-            <textarea placeholder="Escribe tu post-it aquí." value={texto} onChange={(e) => setTexto(e.target.value)} rows={3}/>
-            <button type="sumbit">Agregar</button>
+        <input type="text" placeholder="Título." value={titulo} onChange={(e) => setTitulo(e.target.value)} />
+        <input type="text" placeholder="Descripción." value={texto} onChange={(e) => setTexto(e.target.value)} />
+        <label className="checkbox-label">
+            <input type="checkbox" checked={importante} onChange={() => setImportante(!importante)}/> Importante! </label>
+            <button type="submit">Agregar</button>
         </form>
     );
 }
