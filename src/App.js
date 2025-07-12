@@ -1,6 +1,6 @@
 import React, {use, useState} from "react";
 import Formulariopostit from './components/formulariopostit';
-import Postit from "./components/PostIt";
+import Postit from "./components/postit";
 import './App.css';
 
 function App() {
