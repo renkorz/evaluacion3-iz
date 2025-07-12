@@ -21,6 +21,7 @@ function App() {
   };
 
   return (
+    <>
     <div className="app-container">
       <h1>Post-It Simulator</h1>
       <Formulariopostit agregarPostit={agregarPostit} />
@@ -37,6 +38,10 @@ function App() {
         ))}
       </div>
     </div>
+        <footer className="pie-pagina">
+      &copy; 2025 Iñaki Zárate. Todos los derechos reservados.
+    </footer>
+    </>
   );
 }
 

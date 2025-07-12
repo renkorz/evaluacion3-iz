@@ -1,5 +1,16 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
 body {
-  font-family: 'Reenie Beanie', cursive;
+  font-family: 'Reenie Beanie', vbo;
   background-color: #666;
   margin: 0;
   padding: 0;
@@ -7,7 +18,8 @@ body {
 }
 
 .app-container {
-  max-width: 960px;
+  flex: 1;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 30px 20px;
   text-align: center;
@@ -28,7 +40,6 @@ body {
 }
 
 .form-postit input {
-  width: 100%;
   max-width: 500px;
   padding: 12px 15px;
   border-radius: 5px;
@@ -41,10 +52,10 @@ body {
 .form-postit button {
   background-color: #383838;
   color: white;
-  font-size: 1.2rem;
+  font-size: 25px;
   padding: 10px 30px;
   border: none;
-  border-radius: 8px;
+  border-radius: 2px;
   cursor: pointer;
   transition: background 0.3s ease;
   font-family: 'Arial', cursive;
@@ -54,14 +65,6 @@ body {
   background-color: #424242;
 }
 
-/* Grid para post-its */
-.postits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-}
-
-/* Título dentro del post-it */
 .titulo-postit {
   margin: 0 0 10px;
   font-size: 1.5rem;
@@ -69,32 +72,56 @@ body {
 }
 
 .titulo-postit {
-  margin: 0;
+  margin: 12px;
   margin-bottom: 10px;
-  font-size: 1.5rem;
-  color: #5f370e;
+  font-size: 25px;
+  color: #000000;
   word-wrap: break-word;
+  font-family: Arial;
 }
 
 .descripcion-postit {
-  margin: 0;
+  flex: 1;
+  overflow-y: auto;
   font-size: 1.1rem;
   word-wrap: break-word;
+  padding-right: 6px;
 }
 
-.postit {
+.descripcion-postit::-webkit-scrollbar {
+  width: 6px;
+}
+
+.descripcion-postit::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.postit{
+  width: 100%;
+  height: 250px;
+  min-width: 150px;
+  min-height: 150px;
   background-color: #ffffcc;
-  border-radius: 2px;
-  padding: 30px 30px;
+  padding: 5px;
   position: relative;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-  font-size: 1rem;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  font-size: 25px;
   font-family: 'Reenie Beanie', cursive;
-  color: #333;
-  transition: transform 0.2s ease;
+  color: #000000;
+  transition: transform 0.2 ease;
   display: flex;
   flex-direction: column;
-  min-height: 120px;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.postits-grid {
+  display: grid;
+  margin: 0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  justify-content: flex-end;
 }
 
 .postit:hover {
@@ -131,6 +158,16 @@ body {
   margin-top: 5px;
 }
 
+.pie-pagina {
+  text-align: center;
+  padding: 20px;
+  background-color: #555;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-top: 40px;
+  font-family: 'Arial', cursive;
+}
+
 /* Responsive para móviles */
 @media (max-width: 590px) {
   .form-postit textarea {
@@ -143,12 +180,12 @@ body {
   }
 
   .postit {
-    font-size: 1rem;
+    font-size: 35px;
   }
 
   .postits-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 25px;
   }
 }
