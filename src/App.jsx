@@ -23,7 +23,7 @@ function App() {
   return (
     <>
     <div className="app-container">
-      <h1>Post-It Simulator</h1>
+      <h1>Post-It Simulator!</h1>
       <Formulariopostit agregarPostit={agregarPostit} />
       <div className="postits-grid">
         {postits.map(postit => (
