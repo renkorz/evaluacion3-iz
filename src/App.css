@@ -83,7 +83,7 @@ body {
 .descripcion-postit {
   flex: 1;
   overflow-y: auto;
-  font-size: 1.1rem;
+  font-size: 32px;
   word-wrap: break-word;
   padding-right: 6px;
 }
