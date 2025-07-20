@@ -168,6 +168,30 @@ body {
   font-family: 'Arial', cursive;
 }
 
+.contenedor-receta {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.boton-receta {
+  background-color: #EC7063;
+  color: white;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+.boton-receta:hover {
+  transform: scale(1.05);
+  background-color: #e04a3f;
+}
+
 /* Responsive para móviles */
 @media (max-width: 590px) {
   .form-postit textarea {

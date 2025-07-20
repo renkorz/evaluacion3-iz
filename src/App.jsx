@@ -20,11 +20,38 @@ function App() {
     setPostits(postits.filter(postit => postit.id !== id));
   };
 
+  // FUNCION PARA INTEGRAR API Y OBTENER RECETAS ALEATORIAS
+const obtenerReceta = async () => {
+  try {
+    const respuesta = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+    const datos = await respuesta.json();
+
+    if (datos.meals && datos.meals.length > 0) {
+      const receta = datos.meals[0];
+      const titulo = receta.strMeal;
+      const texto = receta.strInstructions ? receta.strInstructions.slice(0, 250) + '...' : "Sin instrucciones disponibles.";
+      const importante = false;
+
+      agregarPostit(titulo, texto, importante);
+    } else {
+      console.error("No se encontró receta válida.");
+    }
+  } catch (error) {
+    console.error("Error al obtener receta:", error);
+  }
+};
+
   return (
     <>
     <div className="app-container">
       <h1>Post-It Simulator!</h1>
       <Formulariopostit agregarPostit={agregarPostit} />
+      
+      {/* BOTON RECETA */}
+      <div className="contenedor-receta">
+        <button className="boton-receta" onClick={obtenerReceta}>Ver receta aleatoria. </button>
+      </div>
+      
       <div className="postits-grid">
         {postits.map(postit => (
           <Postit 
